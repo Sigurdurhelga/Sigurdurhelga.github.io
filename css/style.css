@@ -43,6 +43,13 @@ nav .brand-logo {
 	margin-left: 27px;
 }
 
+.facePic {
+	height: 200px;
+	width: 200px;
+	display:block;
+	margin:auto;
+}
+
  .row-full{
  width: 100vw;
  position: relative;
