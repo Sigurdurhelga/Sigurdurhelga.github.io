@@ -1,0 +1,333 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    font-family: Helvetica;
+    color: white;
+}
+
+#my-canvas {
+    border: solid 1px black;
+}
+
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.navMenu {
+    position: relative;
+    background: #12b886;
+    width: 50px;
+    height: 100%;
+}
+
+.navMenuItem {
+    color: white;
+    font-size: 1.7rem;
+    padding: 10px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.navMenuItem.selectedTab {
+    background: #10a578;
+    color: #ffd900;
+}
+
+.navContent {
+    background: #10a578;
+    width: 200px;
+    height: 100%;
+}
+
+.toolButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 200px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: stretch;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.toolButton {
+    color: white;
+    font-size: 1.6rem;
+    padding: 10px 11px;
+    flex-grow: 1;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.toolButton.selected,
+#imgurLink {
+    color: #ffd900;
+}
+
+.toolSettingsWrapper>div {
+    display: none;
+}
+
+#square {
+    display: block;
+}
+
+#saveLoad {
+    display: none;
+}
+
+#history {
+    display: none;
+    height: 94.2%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #10a578;
+}
+
+li a {
+    display: block;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Change the link color on hover */
+
+li a:hover {
+    background-color: #12b886;
+    color: white;
+}
+
+@keyframes clickAnimation {
+    50% {
+        color: #ffd900;
+    }
+    100% {
+        color: white;
+    }
+}
+
+@-webkit-keyframes clickAnimation {
+    50% {
+        color: #ffd900;
+    }
+    100% {
+        color: white;
+    }
+}
+
+.clickAnimationActive {
+    animation-name: clickAnimation;
+    animation-duration: 200ms;
+    -webkit-animation-name: clickAnimation;
+    -webkit-animation-duration: 200ms;
+}
+
+.contentHeader {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 900;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    height: 36px;
+}
+
+.historyWrapper {
+    height: 100%;
+    overflow: auto;
+}
+
+.historyItem {
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.historyItem.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffd900;
+}
+
+.historyItem:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.historyItem .fas {
+    margin-right: 20px;
+}
+
+.historyItemName {
+    display: inline;
+    margin-left: 7px;
+}
+
+.historyItemId {
+    display: inline;
+    float: right;
+}
+
+/* https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+
+.slidecontainer {
+    width: 100%;
+}
+
+.settingLabel {
+    display: inline-block;
+    padding: 3px 5px;
+    background: rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+}
+
+.settingValue {
+    display: inline-block;
+    float: right;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 15px;
+    padding: 3px 5px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 92%;
+    height: 7px;
+    border-radius: 5px;
+    outline: none;
+    margin: 0 10px;
+    background: -moz-linear-gradient(right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
+    margin-top: 15px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: white;
+}
+
+.slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.settingIconWrapper {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#filledCircle {
+    display: none;
+}
+
+#filledRectangle {
+    display: none;
+}
+
+#textToolText {
+    resize: none;
+    width: 82%;
+    margin: 0 10px;
+    margin-top: 10px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    border-image: none;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    line-height: 1em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+    font-weight: 600;
+}
+
+#textToolText::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#textToolText:focus {
+    outline-width: 0;
+}
+
+#textToolFont {
+    display: block;
+    width: 92%;
+    margin: 0 10px;
+    margin-top: 5px;
+}
+
+.colorPreview {
+    background: black;
+    height: 60px;
+    cursor: pointer;
+    display: block !important;
+}
+
+.colorLabel {
+    color: white;
+    display: inline-block;
+    padding: 3px 5px;
+    float: right;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#colorModal {
+    position: absolute;
+    background: #10a578;
+    padding-left: 5px;
+    display: none;
+    z-index: 1000;
+    left: 250px;
+    top: 101px;
+    padding: 10px;
+}
+
+.settingIconWrapper svg {
+    cursor: pointer;
+}
+
+#fullResetButton {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DrawIO</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/farbtastic.css" type="text/css" />
+</head>
+
+<body>
+    <div class="navContainer">
+        <div class="navMenu">
+            <div class="navMenuItem selectedTab" onclick="openTab(event, 'tools')">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <div class="navMenuItem" onclick="openTab(event, 'history')">
+                <i class="fas fa-history"></i>
+            </div>
+            <div class="navMenuItem" id="undo" onclick="anime('undo')">
+                <i class="fas fa-undo"></i>
+            </div>
+            <div class="navMenuItem" id="redo" onclick="anime('redo')">
+                <i class="fas fa-redo"></i>
+            </div>
+            <div class="navMenuItem" onclick="openTab(event, 'saveLoad')">
+                <i class="fas fa-save"></i>
+            </div>
+            <div class="navMenuItem" id="fullResetButton">
+                <i class="fas fa-trash-alt" onclick="anime('fullResetButton')"></i>
+            </div>
+        </div>
+        <div class="navContent">
+            <div id="tools">
+                <div class="toolButtonWrapper">
+                    <div class="toolButton" onclick="openTool(event, 'circle')">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div class="toolButton" onclick="openTool(event, 'rectangle')">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <div class="toolButton" onclick="openTool(event, 'line')">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="toolButton selected" onclick="openTool(event, 'pen')">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="toolButton" onclick="openTool(event, 'text')">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="toolButton" onclick="openSetting(event, 'background')">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="toolButton" onclick="openTool(event, 'move')">
+                        <i class="fas fa-arrows-alt"></i>
+                    </div>
+                    <div class="toolButton" onclick="openTool(event, 'select')">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                </div>
+                <div class="toolSettingsWrapper">
+                    <div class="colorPreview">
+                        <div class="colorLabel">
+                            #000000
+                        </div>
+                    </div>
+                    <div id="colorModal">
+                        <form>
+                            <input type="text" id="color" name="color" value="#00ff00" style="display: none" />
+                        </form>
+                        <div id="colorpicker"></div>
+                    </div>
+                    <div id="circle">
+                        <div class="settingIconWrapper">
+                            <div id="nonFilledCircle">
+                                <i class="far fa-circle"></i>
+                            </div>
+                            <div id="filledCircle">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                        </div>
+                        <div class="slidecontainer">
+                            <div class="settingLabel">
+                                Line Width
+                            </div>
+                            <div class="settingValue" id="circleLinewidth">10px</div>
+                            <input type="range" min="1" max="100" value="10" class="slider" id="circleSlider">
+                        </div>
+                    </div>
+                    <div id="rectangle">
+                        <div class="settingIconWrapper">
+                            <div id="nonFilledRectangle">
+                                <i class="far fa-square"></i>
+                            </div>
+                            <div id="filledRectangle">
+                                <i class="fas fa-square"></i>
+                            </div>
+                        </div>
+                        <div class="slidecontainer">
+                            <div class="settingLabel">
+                                Line Width
+                            </div>
+                            <div class="settingValue" id="rectangleLinewidth">10px</div>
+                            <input type="range" min="1" max="100" value="10" class="slider" id="rectangleSlider">
+                        </div>
+                    </div>
+                    <div id="line">
+                        <div class="slidecontainer">
+                            <div class="settingLabel">
+                                Line Width
+                            </div>
+                            <div class="settingValue" id="lineLinewidth">10px</div>
+                            <input type="range" min="1" max="100" value="10" class="slider" id="lineSlider">
+                        </div>
+                    </div>
+                    <div id="text">
+                        <div class="settingLabel">
+                            Text
+                        </div>
+                        <textarea placeholder="Your text here!"
+                                  rows="4" id="textToolText"
+                                  cols="20" class="ui-autocomplete-input"
+                                  autocomplete="off"
+                                  role="textbox"
+                                  aria-autocomplete="list"
+                                  aria-haspopup="true"></textarea>
+                        <div class="settingLabel">
+                            Font
+                        </div>
+                        <select id="textToolFont">
+                            <option value="Arial">Arial</option>
+                            <option value="Times new Roman">Times new Roman</option>
+                        </select>
+                        <div class="slidecontainer">
+                            <div class="settingLabel">
+                                Font Size
+                            </div>
+                            <div class="settingValue" id="fontSize">20pt</div>
+                            <input type="range" min="1" max="80" value="20" class="slider" id="fontSlider">
+                        </div>
+                    </div>
+                    <div id="pen">
+                        <div class="slidecontainer">
+                            <div class="settingLabel">
+                                Line Width
+                            </div>
+                            <div class="settingValue" id="penLinewidth">10px</div>
+                            <input type="range" min="1" max="100" value="10" class="slider" id="penSlider">
+                        </div>
+                    </div>
+                    <div id="background">
+                        <div class="toolButton" onclick="$('#backgroundFiles').click()">
+                            <i class="fas fa-folder"></i>
+                        </div>
+                        <div class="toolButton" onclick="changeCanvasBackground('color')">
+                            <i class="fab fa-bitbucket"></i>
+                        </div>
+                        <div class="toolButton" onclick="changeCanvasBackground('reset')">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <input id="backgroundFiles" type='file' onchange="changeCanvasBackground(this.files[0])" style="display: none" />
+                    </div>
+                </div>
+            </div>
+            <div id="history">
+                <div class="contentHeader">
+                    History
+                </div>
+                <div class="historyWrapper">
+                </div>
+            </div>
+            <div id="saveLoad">
+                <ul>
+                    <li onclick="anime('save')">
+                        <a id="save">
+                            <i class="fas fa-save"></i>
+                            Save
+                        </a>
+                    </li>
+                    <li onclick="anime('load')">
+                        <a id="load">
+                            <i class="fas fa-hdd"></i>
+                            Load
+                        </a>
+                    </li>
+                    <li onclick="imgurUpload()">
+                        <a>
+                        <i class="fas fa-image"></i>
+                            Upload to Imgur
+                        </a>
+                        <a id="imgurLink" href="" style="display: none">No imgur link yet, Make an image and upload!</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="canvasContainer">
+        <canvas id="canvas">
+            Not supported
+        </canvas>
+    </div>
+    <script src="js/toast.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/shapes.js"></script>
+    <script src="js/history.js"></script>
+    <script type="text/javascript" src="js/farbtastic.js"></script>
+    <script src="js/drawio.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/color.js"></script>
+    <script src="js/imgur.js"></script>
+
+</body>
+
+</html>
