@@ -8,7 +8,7 @@ function imgurUpload() {
     $.ajax({
         type: "POST",
         headers: {
-            Authorization: "Client-ID 6ed119ffa873364",
+            Authorization: "Client-ID 6ed119ffa873364", /* DONT ABUSE ME -.-, please :) */
             Accept: "application/json",
         },
         mimeType: 'multipart/form-data',
