@@ -1,0 +1,34 @@
+{
+    "Portfolio": [
+        {
+            "name": "Dragnet",
+            "description" : "cool thing with neural networks",
+            "link" : {"href": "github.com", "text": "See it on Github.com"},
+            "image" : ""
+        },
+        {
+            "name": "Blabbr",
+            "description" : "cool thing with IRCs",
+            "link" : {"href": "github.com", "text": "See it on Github.com"},
+            "image" : ""
+        },
+        {
+            "name": "This website",
+            "description" : "cool thing with REACT fully rendered from json",
+            "link" : {"href": "https://www.github.com", "text": "Github.com"},
+            "image" : "./images/projects/dragnet.png"
+        },
+        {
+            "name": "Elumins Path",
+            "description" : "A video game I created for the course \"Computer Game Design And Development\". The game focuses on the character Elumin while he traverses through the World Tree in order to rescue his long lost race.",
+            "link" : {"href": "https://sigurdur.me/elumins", "text": "Play it here!"},
+            "image" : ""
+        },
+        {
+            "name": "Blabbr",
+            "description" : "cool thing with IRCs",
+            "link" : {"href": "github.com", "text": "See it on Github.com"},
+            "image" : ""
+        }
+    ]
+}

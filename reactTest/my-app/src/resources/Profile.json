@@ -1,0 +1,15 @@
+{
+    "profile": {
+        "Name": "Sigurður Helgason",
+        "Title": "Programmer",
+        "Email": "sigurdur@sigurdur.me",
+        "Phone": "(+354) 774-4433",
+        "Links": [
+            { "href": "https://www.sigurdur.me", "text": "My website", "icon": "user-circle"},
+            { "href": "https://www.github.com/sigurdurhelga", "text": "Github", "icon" : "github"},
+            { "href": "https://www.linkedin.com/in/sigurdur-helga", "text": "LinkedIn", "icon" : "linkedin"}
+        ],
+        "AboutHeading": "About me",
+        "About": "My name is Sigurður Helgason. I'm a student at Reykjavik University currently finishing my last semester in the Research Based Computer Science program. I finished my matriculation exam at the Tækniskólinn í Reykjavík from the School of Information Technology prior to starting my studies at Reykjavik University. I'm a very driven individual who enjoys learning new things. My interest in computer science began at an early age and I have been realizing that interest through my studies. Now that my degree is coming to a close and I have some project experience, I am eager to start to apply my new skills in industry."
+    }
+}

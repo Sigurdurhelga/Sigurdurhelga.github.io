@@ -1,0 +1,8 @@
+.projectsSection {
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: center;
+}
