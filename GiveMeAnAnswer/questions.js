@@ -41,7 +41,7 @@ ShortAnswer.prototype.displayQuestion = function () {
 }
 
 ShortAnswer.prototype.answerQuestion = function (answer) {
-    return answer.toLowerCase() == this.answer.toLowerCase();
+    return answer.toLowerCase() == this.questionAnswer.toLowerCase();
 }
 
 function TrueOrFalse (questionText, questionAnswer) {
@@ -61,27 +61,5 @@ TrueOrFalse.prototype.displayQuestion = function () {
 }
 
 TrueOrFalse.prototype.answerQuestion = function(answer){
-    if(this.answer && answer == 'true'){
-        return true;
-    }
-    else if(!this.answer && answer == 'false'){
-        return true;
-    }
-    return false;
+    return answer == this.questionAnswer.toString();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

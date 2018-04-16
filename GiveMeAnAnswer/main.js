@@ -32,7 +32,7 @@ function gameHandler(num_questions) {
     };
 
     this.getNextQuestion = function (){
-        if(this.questions_left == 0){
+        if(this.questions_left <= 0){
             this.gameEnd();
             return;
         }
@@ -93,6 +93,7 @@ $(function () {
         }
     });
     $('#retryButton').on('click', function(){
+        clearInterval(game.currentTimeout);
         game = null;
         $('.end-screen').hide();
         $('.entry-screen').show();
