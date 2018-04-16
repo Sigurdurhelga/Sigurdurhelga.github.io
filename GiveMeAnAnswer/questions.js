@@ -40,6 +40,10 @@ ShortAnswer.prototype.displayQuestion = function () {
     $('#answerForm').append("<input type='text' class='form-control sa-input' placeholder='Type your answer here' name='answer'/>")
 }
 
+ShortAnswer.prototype.answerQuestion = function (answer) {
+    return answer.toLowerCase() == this.answer.toLowerCase();
+}
+
 function TrueOrFalse (questionText, questionAnswer) {
     Question.call(this, questionText, questionAnswer);
 }
@@ -55,3 +59,29 @@ TrueOrFalse.prototype.displayQuestion = function () {
     $('#answerForm').append(answerradios);
 
 }
+
+TrueOrFalse.prototype.answerQuestion = function(answer){
+    if(this.answer && answer == 'true'){
+        return true;
+    }
+    else if(!this.answer && answer == 'false'){
+        return true;
+    }
+    return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
