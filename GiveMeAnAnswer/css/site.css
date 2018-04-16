@@ -1,0 +1,52 @@
+.game-board {
+    position: relative;
+    height: 600px;
+    width: 100%;
+    border: solid 1px rgb(155, 155, 155);
+}
+
+.center {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn-large {
+    font-size: 40px;
+    transition: border 1s;
+}
+
+.btn-large:hover {
+    border: solid 10px rgba(100, 100, 255);
+}
+
+.input-small {
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.input-error {
+    border: solid 2px red;
+}
+
+.game-screen, .question-text, .multiple-choice, .short-answer, .true-or-false {
+    display: none;
+}
+
+.question-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sa-input {
+    width: 75%;
+    margin: auto;
+}
+
+.end-screen{
+    display:none;
+}
