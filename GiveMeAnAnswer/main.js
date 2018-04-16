@@ -85,7 +85,6 @@ $(function () {
             $(this).parent().fadeOut();
             $('.game-screen').fadeIn('slow');
             $('.question-text').show();
-
             game = new gameHandler(nQuestions);
         } else {
             // Display error message
@@ -94,6 +93,7 @@ $(function () {
         }
     });
     $('#retryButton').on('click', function(){
+        game = null;
         $('.end-screen').hide();
         $('.entry-screen').show();
     })
