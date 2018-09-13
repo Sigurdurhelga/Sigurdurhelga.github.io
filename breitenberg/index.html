@@ -13,6 +13,20 @@
     </script>
   </head>
   <body>
+    <h1>Simple Breitenberg Vehicle simulation</h1>
+    <div>
+      The simulation has a small UI bug where the whole screen is not displayed. This happened in exporting from unity to WebGL.
+
+      The red bird is an agent that maintains a memory of which blue birds it has eaten. The red bird selects which target it tries 
+      to go for based on a exploration/exploitation epsilon constant. If the bird selects to exploration it's target becomes the closest 
+      blue bird to it. If the bird select exploitation it targets the closest blue bird in of the type that has had the largest average score.
+
+      The blue birds spawn in a of a random type [1-9] and a random score [1-100]*type. Therefore eventually the red bird will always go for 
+      blue birds of type 9 eventually.
+
+      <span>The code for this simulation can be downloaded <a href="http://www.sigurdur.me/breitenberg.rar">HERE</a> there the visual bugs will not be present.</span>
+
+    </div>
     <div class="webgl-content">
       <div id="gameContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
