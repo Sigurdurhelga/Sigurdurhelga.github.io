@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | braitenberg</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/v2Build2.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class='myarea'>
+      <div class="webgl-content">
+        <div id="gameContainer" style="width: 960px; height: 600px"></div>
+        <div class="footer">
+          <div class="webgl-logo"></div>
+          <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+          <div class="title">braitenberg</div>
+        </div>
+      </div>
+      <div class='text'>
+        <h1 class=''>Breitenberg - Assignment 2 - Emergence</h1>
+        <div class='explain'>
+          For this assignment I improved on the implementation of breitenberg vehicles which can be seen on <a href="www.sigurdur.me/breitenberg">Link</a>. The Unity code for this project can be downloaded at <a href="www.sigurdur.me/breitenberg2.rar">Download</a>.
+          <h2>Introduction</h2>
+          This iteration of the assignment wanted us to explore the concept of emerging properties of a simple system. We were to do it in an environment 
+          where our agents exhibit breitenberg vehicle behaviour. I do this by having red birds act as breitenberg vehicles and blue birds act as entities 
+          that the red birds are attracted to.
+          
+          <h2>Agents</h2>
+          
+          The red birds in this iteration have two objects that they are attracted to, they drive towards blue birds that are food and if they can not 
+          find any food close by they drive to a close by red bird. Doing this the red birds are similar to pack/herd animals.<br/><br/>
+
+          To achieve this behaviour I introduced some parameters which each red bird takes action based on along with some parameters of the environment, these parameters can be tweaked. The parameters are as follows:
+
+          <table class='param-table'>
+              <tr>
+                <th>Parameter Name</th>
+                <th>Parameter Description</th> 
+              </tr>
+              <tr>
+                <td>Agents</td>
+                <td>Represent the amount of red bird spawn in a simulation.</td> 
+              </tr>
+              <tr>
+                <td>Agent think</td>
+                <td>Represent the amount of frames it takes for a bird to respond to input.</td> 
+              </tr>
+              <tr>
+                <td>Initial hunger</td>
+                <td>Represent the hunger level each bird starts with.</td> 
+              </tr>
+              <tr>
+                <td>Hunger deter</td>
+                <td>Represent the amount of hunger level a bird loses every H-deter time.</td> 
+              </tr>
+              <tr>
+                <td>H-deter time</td>
+                <td>Represent the amount of frames it takes for a bird to lose one hunger deter of hunger level.</td> 
+              </tr>
+              <tr>
+                <td>Full breakpoint</td>
+                <td>Represent the amount of hunger level it takes for a bird to become full so it can rest.</td> 
+              </tr>
+              <tr>
+                <td>Vision field</td>
+                <td>Represent the distance a bird can see, be that for food or other red birds.</td> 
+              </tr>
+              <tr>
+                <td>Min speed</td>
+                <td>Represent the minimum speed a bird can travel.</td> 
+              </tr>
+              <tr>
+                <td>Max speed</td>
+                <td>Represent the maximum speed a bird can travel.</td> 
+              </tr>
+              <tr>
+                <td>Initial foods</td>
+                <td>Represent the initial amount of foods on the ground.</td> 
+              </tr>
+              <tr>
+                <td>Food spawn rate</td>
+                <td>Represent the seconds it takes for a new food to appear.</td> 
+              </tr>
+              <tr>
+                <td>Food deter</td>
+                <td>Represent the food level that is lost each F-deter time for the food.</td> 
+              </tr>
+              <tr>
+                <td>F-deter time</td>
+                <td>Represent the amount of frames it takes for a food to lose Food deter many food levels.</td> 
+              </tr>
+            </table>
+
+          
+          The red birds have a simple control sequence and it as as follows:
+
+          <ul>
+          <li>The red birds go towards the closes food they can find.</li>
+          <li>If there is no such food within their vision range they look for the closest red bird and go to them. </li>
+          <li>If no such red bird is found the bird just stays put until a better opportunity arises.</li>
+          <li>If a bird has eaten enough food to go beyond his Full breakpoint he essentially sleeps in the position he is in until he has become hungry again.</li>
+          <li>The speed of a bird is determined by how full he is, i.e. the more he has eaten the more energetic he becomes.</li>
+          <li>If a red bird eats something he shares it evenly between any bird within his vision range.</li>
+          </ul>
+
+          The blue birds (food), don't do anything but deteriorate over time.
+
+          <h2>Emergent properties</h2>
+
+          Properties that naturally arise from this system are for instance that the birds generally form groups that all have a similar hunger score and therefore 
+          a similar speed. The stronger of these groups tend to survive much longer than the weaker. These bird groups also seem to have a philosophy opposite to the 
+          "no man left behind" principle. Because if a weak bird is within a strong group he is left behind by the faster birds in the group, and only those faster 
+          birds share the food, since the food is shared by the bird that ate the food only with the birds in his vision range.<br/><br/>
+
+          These groups have an emergent property where as they grow they become more likely to either die out or to be split into smaller groups. While smaller groups 
+          can have a hard time getting any food, so the groups even out in sizes over time.
+
+
+          <h2>Details</h2>
+
+          In this webgl client the simulation can be played. The simulation has these parameters by default but the parameters can be tweaked by clicking the "New simulation" button.
+
+          It is not required to tweak every parameter, if one is omitted the default value will be used.
+
+          <table class='param-table'>
+              <tr>
+                <th>Parameter Name</th>
+                <th>Default Value</th> 
+              </tr>
+              <tr>
+                <td>Agents</td>
+                <td>20</td> 
+              </tr>
+              <tr>
+                <td>Agent think</td>
+                <td>100</td> 
+              </tr>
+              <tr>
+                <td>Initial hunger</td>
+                <td>250</td> 
+              </tr>
+              <tr>
+                <td>Hunger deter</td>
+                <td>25</td> 
+              </tr>
+              <tr>
+                <td>H-deter time</td>
+                <td>700</td> 
+              </tr>
+              <tr>
+                <td>Full breakpoint</td>
+                <td>1500</td> 
+              </tr>
+              <tr>
+                <td>Vision field</td>
+                <td>7</td> 
+              </tr>
+              <tr>
+                <td>Min speed</td>
+                <td>15</td> 
+              </tr>
+              <tr>
+                <td>Max speed</td>
+                <td>25</td> 
+              </tr>
+              <tr>
+                <td>Initial foods</td>
+                <td>10</td> 
+              </tr>
+              <tr>
+                <td>Food spawn rate</td>
+                <td>1</td> 
+              </tr>
+              <tr>
+                <td>Food deter</td>
+                <td>15</td> 
+              </tr>
+              <tr>
+                <td>F-deter time</td>
+                <td>400</td> 
+              </tr>
+            </table>
+
+        <h2>Interesting parameter setups</h2>
+
+        First setup I found to be interesting was only really interesting to me because it is visual and looks fluid-like. <br /><br />
+
+        <img src='./images/largeFastGroups.png'> <br /><br />
+
+        Second setup I found to be fun was as follows. I find it interesting because it puts the groups into a very rough situation and every now 
+        and then you get one or two groups that are extremely successful while all other groups die out. <br /><br />
+    
+        <img src='./images/smallFewGroups.png'> <br /><br />
+
+        Many other interesting setups were fun, but I'll let the reader play around now.
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
