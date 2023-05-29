@@ -1,0 +1,21 @@
+body {
+    background-image: url("./me.jpeg");
+    background-repeat: repeat;
+    font-family: "Amita";
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.me {
+    background-color: blueviolet;
+    color: orange;
+    font-size: 68px;
+    padding: 100px;
+}
